@@ -1,6 +1,3 @@
-// We will pull the data from the JSON file and randomly select a student 
-// Create a function that then randomize a selection from that data
-// On a button click we will display the data onto the DOM
 
 let firstName = document.getElementById("firstName");
 let lastName = document.getElementById("lastName");
@@ -11,9 +8,7 @@ let fullName = document.getElementById("fullName")
 let previousNames = [];
 let previousEmails = [];
 
-// Create a function that will pull the data from the JSON file
-// .then() is a promise that will wait for the data to be returned
-// promise can be accepted or rejected
+
 function getStudentData(){
     return fetch('../data/data.json')
     .then( response => response.json())
@@ -24,14 +19,14 @@ function getStudentData(){
 }
 
 getStudentData();
-//Create a function that will randomize the selection of a student
+
 function getRandomStudent(students){
     let randomIndex = Math.floor(Math.random() * students.length);
     console.log([randomIndex]);
     return students[randomIndex];
 }
 
-//Create a function that will display the data on to the DOM
+
 randomName.addEventListener('click', () =>{
     getStudentData().then( students => {
         
@@ -53,11 +48,11 @@ randomName.addEventListener('click', () =>{
 
 function nameList(){
     if (previousNames.length > 5) {
-      previousNames.shift(); // Remove the oldest name
+      previousNames.shift(); 
     }
   
     const previousNamesList = document.getElementById('previousNamesList');
-    previousNamesList.innerHTML = ''; // Clear the list
+    previousNamesList.innerHTML = ''; 
   
     previousNames.forEach(name => {
       const li = document.createElement('li');
@@ -68,11 +63,11 @@ function nameList(){
 
   function emailList(){
     if (previousEmails.length > 5) {
-      previousEmails.shift(); // Remove the oldest name
+      previousEmails.shift(); 
     }
   
     const previousEmailsList = document.getElementById('previousEmailsList');
-    previousEmailsList.innerHTML = ''; // Clear the list
+    previousEmailsList.innerHTML = ''; 
   
     previousEmails.forEach(email => {
       const li = document.createElement('li');
