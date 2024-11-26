@@ -4,6 +4,8 @@
 
 let firstName = document.getElementById("firstName");
 let lastName = document.getElementById("lastName");
+let codestackemail = document.getElementById("codestackemail");
+let email = document.getElementById("email");
 let randomName = document.getElementById("randomName")
 let fullName = document.getElementById("fullName")
 let previousNames = [];
@@ -31,16 +33,14 @@ function getRandomStudent(students){
 //Create a function that will display the data on to the DOM
 randomName.addEventListener('click', () =>{
     getStudentData().then( students => {
-        // let randomStudent = getRandomStudent(students);
-        // console.log(randomStudent);
-        // firstName.innerText = randomStudent.firstName;
-        // lastName.innerText = randomStudent.lastName;
         
         let randomStudent = getRandomStudent(students);
         console.log(randomStudent);
         let fullName = randomStudent.firstName + " " + randomStudent.lastName;
         fullNameElement.innerText = fullName;
         previousNames.push(fullName);
+        codestackemail.innerText = randomStudent.codestackemail;
+        email.innerText = randomStudent.email;
         nameList();
 
             
@@ -62,17 +62,3 @@ function nameList(){
     });
   }
 
-// function saveAndDisplayNames(fullNamename) {
-//     previousNames.push(fullNamename);
-//     if (previousNames.length > 5) {
-//       previousNames.shift();
-//     }
-  
-//     const previousNamesList = document.getElementById('previousNamesList');
-//     previousNamesList.innerHTML = '';
-//     previousNames.forEach(fullNamename => {
-//       const li = document.createElement('li');
-//       li.textContent = fullName;
-//       previousNamesList.appendChild(li);
-//     });
-//   }
