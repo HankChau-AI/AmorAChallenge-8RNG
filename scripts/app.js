@@ -9,6 +9,7 @@ let email = document.getElementById("email");
 let randomName = document.getElementById("randomName")
 let fullName = document.getElementById("fullName")
 let previousNames = [];
+let previousEmails = [];
 
 // Create a function that will pull the data from the JSON file
 // .then() is a promise that will wait for the data to be returned
@@ -41,7 +42,10 @@ randomName.addEventListener('click', () =>{
         previousNames.push(fullName);
         codestackemail.innerText = randomStudent.codestackemail;
         email.innerText = randomStudent.email;
+        let bothEmails = randomStudent.codestackemail + " | " + randomStudent.email;
+        previousEmails.push(bothEmails);
         nameList();
+        emailList();
 
             
     })
@@ -61,4 +65,20 @@ function nameList(){
       previousNamesList.appendChild(li);
     });
   }
+
+  function emailList(){
+    if (previousEmails.length > 5) {
+      previousEmails.shift(); // Remove the oldest name
+    }
+  
+    const previousEmailsList = document.getElementById('previousEmailsList');
+    previousEmailsList.innerHTML = ''; // Clear the list
+  
+    previousEmails.forEach(email => {
+      const li = document.createElement('li');
+      li.textContent = email;
+      previousEmailsList.appendChild(li);
+    });
+  }
+
 
